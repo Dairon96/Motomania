@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- Preloader -->
@@ -92,7 +93,7 @@
         </div>
     </section>
 
-    <!-- Productos / Categorías -->
+    <!-- Productos / Categorías con galería interactiva -->
     <section id="productos" class="products">
         <div class="container">
             <div class="section-header">
@@ -101,28 +102,28 @@
                 <p class="section-desc">Piezas y accesorios para mantener tu moto al máximo nivel</p>
             </div>
             <div class="products-grid">
-                <div class="product-card">
+                <div class="product-card" data-category="electronica">
                     <div class="card-icon">
                         <i class="fas fa-microchip"></i>
                     </div>
                     <h3>Electrónica</h3>
                     <p>CDI, bobinas, reguladores, faros, luces LED, baterías</p>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-category="motor">
                     <div class="card-icon">
                         <i class="fas fa-oil-can"></i>
                     </div>
                     <h3>Motor</h3>
                     <p>Cilindros, pistones, aros, juntas, aceites, filtros</p>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-category="transmision">
                     <div class="card-icon">
                         <i class="fas fa-cogs"></i>
                     </div>
                     <h3>Transmisión</h3>
                     <p>Cadenas, piñones, coronas, embragues, discos de freno</p>
                 </div>
-                <div class="product-card">
+                <div class="product-card" data-category="accesorios">
                     <div class="card-icon">
                         <i class="fas fa-helmet-safety"></i>
                     </div>
@@ -130,117 +131,128 @@
                     <p>Cascos, espejos, manillares, maletas, protectores</p>
                 </div>
             </div>
+            
+            <!-- Modal / Lightbox para mostrar fotos -->
+            <div id="productModal" class="product-modal">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <h3 id="modalTitle"></h3>
+                    <div class="modal-gallery" id="modalGallery">
+                        <!-- Las fotos se cargarán dinámicamente con JavaScript -->
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Sucursales / Ubicaciones -->
-<section id="ubicaciones" class="locations">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Nuestras tiendas</span>
-            <h2 class="section-title">Encuéntranos en <span class="highlight">3 municipios</span></h2>
-            <p class="section-desc">Estamos presentes en Pinar del Río, Consolación del Sur y Sandino</p>
-        </div>
-        
-        <div class="locations-grid">
-            <!-- Sucursal Pinar del Río -->
-            <div class="location-card">
-                <div class="location-header">
-                    <i class="fas fa-city"></i>
-                    <h3>Pinar del Río</h3>
-                    <span class="location-badge">Principal</span>
-                </div>
-                <div class="location-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d656.8494652820864!2d-83.69373590627644!3d22.417300261499406!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f34ad00100e13f7%3A0x976e4ce2918ca116!2sMotomania!5e1!3m2!1ses!2scu!4v1774377051930!5m2!1ses!2scu" 
-                        width="100%" 
-                        height="200" 
-                        style="border:0; border-radius: 16px;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-                <div class="location-info">
-                    <p><i class="fas fa-location-dot"></i> 110 Gerardo Medina, Pinar del Río</p>
-                    <p><i class="fas fa-code"></i> Código: C884+RC</p>
-                </div>
+    <section id="ubicaciones" class="locations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestras tiendas</span>
+                <h2 class="section-title">Encuéntranos en <span class="highlight">3 municipios</span></h2>
+                <p class="section-desc">Estamos presentes en Pinar del Río, Consolación del Sur y Sandino</p>
             </div>
-
-            <!-- Sucursal Consolación del Sur -->
-            <div class="location-card">
-                <div class="location-header">
-                    <i class="fas fa-tree"></i>
-                    <h3>Consolación del Sur</h3>
-                    <span class="location-badge">📍 Abierto</span>
-                </div>
-                <div class="location-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d411.7459608309932!2d-83.51541290533599!3d22.503014376887446!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ccab6696f16b57%3A0x5c35aa1c9f1df20c!2sPizzer%C3%ADa%20Salemo!5e1!3m2!1ses!2scu!4v1774381899065!5m2!1ses!2scu" 
-                        width="100%" 
-                        height="200" 
-                        style="border:0; border-radius: 16px;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-                <div class="location-info">
-                    <p><i class="fas fa-location-dot"></i> Consolación del Sur, Pinar del Río</p>
-                    <p><i class="fas fa-store"></i> Cerca de Pizzería Salemo</p>
-                </div>
-            </div>
-
-            <!-- Sucursal Sandino -->
-            <div class="location-card">
-                <div class="location-header">
-                    <i class="fas fa-umbrella-beach"></i>
-                    <h3>Sandino</h3>
-                    <span class="location-badge">📍 Abierto</span>
-                </div>
-                <div class="location-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d2160.984999027759!2d-84.20886859008021!3d22.080327688005244!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDA0JzQ4LjYiTiA4NMKwMTInMzEuMCJX!5e1!3m2!1ses!2sus!4v1774387591676!5m2!1ses!2sus"
-                        width="100%" 
-                        height="200" 
-                        style="border:0; border-radius: 16px;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-                <div class="location-info">
-                    <p><i class="fas fa-location-dot"></i> Sandino, Pinar del Río</p>
-                    <p><i class="fas fa-map-pin"></i> Coordenadas: 22°04'48.6"N 84°12'31.0"W</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Horario de atención -->
-<section class="schedule">
-    <div class="container">
-        <div class="schedule-card">
-            <div class="schedule-icon">
-                <i class="fas fa-clock"></i>
-            </div>
-            <div class="schedule-content">
-                <h3>Horario de atención</h3>
-                <div class="schedule-hours">
-                    <div class="hours-row">
-                        <span class="days">Lunes a Sábado</span>
-                        <span class="time">8:00 AM - 6:00 PM</span>
+            
+            <div class="locations-grid">
+                <!-- Sucursal Pinar del Río -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <i class="fas fa-city"></i>
+                        <h3>Pinar del Río</h3>
+                        <span class="location-badge">Principal</span>
                     </div>
-                    <div class="hours-row">
-                        <span class="days">Domingos</span>
-                        <span class="time closed">Cerrado</span>
+                    <div class="location-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d656.8494652820864!2d-83.69373590627644!3d22.417300261499406!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f34ad00100e13f7%3A0x976e4ce2918ca116!2sMotomania!5e1!3m2!1ses!2scu!4v1774377051930!5m2!1ses!2scu" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 16px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> 110 Gerardo Medina, Pinar del Río</p>
+                        <p><i class="fas fa-store"></i> Cerca de la funeraria, Frente a La Masía</p>
                     </div>
                 </div>
-                <p class="schedule-note">
-                    <i class="fas fa-info-circle"></i> Atendemos en las tres sucursales en el mismo horario
-                </p>
+
+                <!-- Sucursal Consolación del Sur -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <i class="fas fa-tree"></i>
+                        <h3>Consolación del Sur</h3>
+                        <span class="location-badge">📍 Abierto</span>
+                    </div>
+                    <div class="location-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d411.7459608309932!2d-83.51541290533599!3d22.503014376887446!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ccab6696f16b57%3A0x5c35aa1c9f1df20c!2sPizzer%C3%ADa%20Salemo!5e1!3m2!1ses!2scu!4v1774381899065!5m2!1ses!2scu" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 16px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> Consolación del Sur, Pinar del Río</p>
+                        <p><i class="fas fa-store"></i> En el ranchón de Pizzería Salemo</p>
+                    </div>
+                </div>
+
+                <!-- Sucursal Sandino -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>Sandino</h3>
+                        <span class="location-badge">📍 Abierto</span>
+                    </div>
+                    <div class="location-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1910.8154605161176!2d-84.20964421666584!3d22.08037990809557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjLCsDA0JzQ4LjYiTiA4NMKwMTInMzEuMCJX!5e1!3m2!1ses!2sus!4v1774387012049!5m2!1ses!2sus" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 16px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> Sandino, Pinar del Río</p>
+                        <p><i class="fas fa-home"></i> Zona H Casa #33 Sandino</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Horario de atención -->
+    <section class="schedule">
+        <div class="container">
+            <div class="schedule-card">
+                <div class="schedule-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="schedule-content">
+                    <h3>Horario de atención</h3>
+                    <div class="schedule-hours">
+                        <div class="hours-row">
+                            <span class="days">Lunes a Sábado</span>
+                            <span class="time">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="hours-row">
+                            <span class="days">Domingos</span>
+                            <span class="time closed">Cerrado</span>
+                        </div>
+                    </div>
+                    <p class="schedule-note">
+                        <i class="fas fa-info-circle"></i> Atendemos en las tres sucursales en el mismo horario
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contacto directo -->
     <section id="contacto" class="contact">
@@ -255,11 +267,11 @@
                     <a href="https://chat.whatsapp.com/E7s4h2pKwpF4VQa9QPDEwJ" target="_blank" class="btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> Grupo WhatsApp
                     </a>
-                    <a href="https://www.facebook.com/share/1KY6tDqjFy/" target="_blank" class="btn-facebook">
-                        <i class="fab fa-facebook-f"></i> Grupo Facebook
-                    </a>
                     <a href="tel:+5358536015" class="btn-call">
                         <i class="fas fa-phone"></i> Llamar ahora
+                    </a>
+                    <a href="https://www.facebook.com/share/1KY6tDqjFy/" target="_blank" class="btn-facebook">
+                        <i class="fab fa-facebook-f"></i> Grupo Facebook
                     </a>
                 </div>
             </div>
@@ -313,6 +325,110 @@
             } else {
                 nav.classList.remove('scrolled');
             }
+        });
+
+        // ========================================
+        // GALERÍA INTERACTIVA DE PRODUCTOS
+        // ========================================
+        
+        // Datos de productos con imágenes
+        const productsData = {
+            electronica: {
+                title: "Electrónica",
+                items: [
+                    { img: "img/electronica/cdi.jpg", name: "CDI para moto" },
+                    { img: "img/electronica/bobina.jpg", name: "Bobina de encendido" },
+                    { img: "img/electronica/regulador.jpg", name: "Regulador de voltaje" },
+                    { img: "img/electronica/faro-led.jpg", name: "Faro LED" },
+                    { img: "img/electronica/bateria.jpg", name: "Batería sellada" }
+                ]
+            },
+            motor: {
+                title: "Motor",
+                items: [
+                    { img: "img/motor/cilindro.jpg", name: "Cilindro completo" },
+                    { img: "img/motor/piston.jpg", name: "Pistón y aros" },
+                    { img: "img/motor/junta.jpg", name: "Juntas completas" },
+                    { img: "img/motor/aceite.jpg", name: "Aceite sintético" },
+                    { img: "img/motor/filtro.jpg", name: "Filtro de aceite" }
+                ]
+            },
+            transmision: {
+                title: "Transmisión",
+                items: [
+                    { img: "img/transmision/cadena.jpg", name: "Cadena O-Ring" },
+                    { img: "img/transmision/piñon.jpg", name: "Piñón de acero" },
+                    { img: "img/transmision/corona.jpg", name: "Corona reforzada" },
+                    { img: "img/transmision/embrague.jpg", name: "Kit de embrague" },
+                    { img: "img/transmision/disco-freno.jpg", name: "Disco de freno" }
+                ]
+            },
+            accesorios: {
+                title: "Accesorios",
+                items: [
+                    { img: "img/accesorios/casco.jpg", name: "Casco integral" },
+                    { img: "img/accesorios/espejos.jpg", name: "Espejos retro" },
+                    { img: "img/accesorios/manillar.jpg", name: "Manillar deportivo" },
+                    { img: "img/accesorios/maleta.jpg", name: "Maleta lateral" },
+                    { img: "img/accesorios/protector.jpg", name: "Protector de motor" }
+                ]
+            }
+        };
+
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('productModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalGallery = document.getElementById('modalGallery');
+            const closeModal = document.querySelector('.modal-close');
+
+            // Verificar que los elementos existan
+            if (!modal || !modalTitle || !modalGallery) {
+                console.error('Elementos del modal no encontrados');
+                return;
+            }
+
+            // Función para abrir modal con imágenes
+            window.openModal = function(category) {
+                const data = productsData[category];
+                if (!data) return;
+                
+                modalTitle.textContent = data.title;
+                modalGallery.innerHTML = '';
+                
+                data.items.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'modal-item';
+                    div.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/300x200/1a1a1a/c41e3a?text=Imagen+Próximamente'">
+                        <p>${item.name}</p>
+                    `;
+                    modalGallery.appendChild(div);
+                });
+                
+                modal.classList.add('active');
+            };
+
+            // Asignar eventos a las tarjetas de productos
+            document.querySelectorAll('.product-card').forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (category) {
+                    card.addEventListener('click', () => window.openModal(category));
+                }
+            });
+
+            // Cerrar modal
+            if (closeModal) {
+                closeModal.addEventListener('click', () => {
+                    modal.classList.remove('active');
+                });
+            }
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
         });
     </script>
 </body>
