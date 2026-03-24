@@ -169,7 +169,6 @@ body {
     align-items: center;
 }
 
-/* Iconos sociales en bolitas redondas */
 .social-icon {
     width: 40px;
     height: 40px;
@@ -495,7 +494,7 @@ body {
 }
 
 /* ========================================
-   LOCATION SECTION - CON MAPA DESTACADO Y ZOOM
+   LOCATION SECTION (original)
    ======================================== */
 .location {
     padding: 100px 0;
@@ -602,37 +601,109 @@ body {
     color: var(--red-accent);
 }
 
-.social-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
+/* ========================================
+   SUCURSALES / LOCATIONS MULTIPLES
+   ======================================== */
+.locations {
+    padding: 100px 0;
+    background: var(--dark-gray);
 }
 
-.whatsapp-link, .facebook-link {
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.location-card {
+    background: var(--charcoal);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--red-accent);
+    box-shadow: 0 15px 30px rgba(196, 30, 58, 0.15);
+}
+
+.location-header {
+    padding: 20px 24px 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 12px;
-    padding: 14px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.location-header i {
+    font-size: 1.6rem;
+    color: var(--red-accent);
+}
+
+.location-header h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    flex: 1;
+}
+
+.location-badge {
+    background: var(--red-accent);
+    color: white;
+    padding: 4px 12px;
     border-radius: 40px;
-    text-decoration: none;
+    font-size: 0.7rem;
     font-weight: 600;
-    transition: transform 0.2s;
+    letter-spacing: 1px;
 }
 
-.whatsapp-link {
-    background: var(--whatsapp-green);
-    color: white;
+.location-badge-secondary {
+    background: rgba(196, 30, 58, 0.3);
+    color: var(--text-light);
+    border: 1px solid var(--red-accent);
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 600;
 }
 
-.facebook-link {
-    background: var(--facebook-blue);
-    color: white;
+.location-map {
+    padding: 16px;
 }
 
-.whatsapp-link:hover, .facebook-link:hover {
-    transform: scale(1.02);
+.location-map iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 16px;
+    border: none;
+}
+
+.location-info {
+    padding: 0 24px 24px;
+}
+
+.location-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.location-info i {
+    width: 20px;
+    color: var(--red-accent);
+}
+
+.sucursales-footer {
+    font-size: 0.8rem;
+    margin-top: 12px;
+    color: var(--text-dim);
 }
 
 /* ========================================
@@ -640,7 +711,7 @@ body {
    ======================================== */
 .contact {
     padding: 80px 0;
-    background: var(--dark-gray);
+    background: var(--black);
 }
 
 .contact-card {
@@ -821,6 +892,20 @@ body {
     
     .contact-card {
         padding: 32px 24px;
+    }
+    
+    .locations-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .location-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .location-info p {
+        justify-content: center;
     }
 }
 
