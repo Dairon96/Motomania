@@ -11,6 +11,7 @@
     --red-glow: rgba(196, 30, 58, 0.3);
     --amber: #d4a017;
     --facebook-blue: #1877f2;
+    --whatsapp-green: #25D366;
     --text-light: #e0e0e0;
     --text-dim: #8a8a8a;
     --border-color: #2a2a2a;
@@ -168,25 +169,8 @@ body {
     align-items: center;
 }
 
-.whatsapp-btn {
-    background: #25D366;
-    padding: 8px 20px;
-    border-radius: 40px;
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
-    transition: transform 0.2s;
-}
-
-.whatsapp-btn:hover {
-    transform: scale(1.05);
-}
-
-.facebook-btn {
-    background: var(--facebook-blue);
+/* Iconos sociales en bolitas redondas */
+.social-icon {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -195,11 +179,27 @@ body {
     justify-content: center;
     text-decoration: none;
     color: white;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.facebook-btn:hover {
-    transform: scale(1.05);
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-icon {
+    background: var(--whatsapp-green);
+}
+
+.whatsapp-icon:hover {
+    box-shadow: 0 0 12px rgba(37, 211, 102, 0.5);
+}
+
+.facebook-icon {
+    background: var(--facebook-blue);
+}
+
+.facebook-icon:hover {
+    box-shadow: 0 0 12px rgba(24, 119, 242, 0.5);
 }
 
 /* ========================================
@@ -313,7 +313,7 @@ body {
 }
 
 .btn-primary {
-    background: #25D366;
+    background: var(--whatsapp-green);
     color: white;
 }
 
@@ -495,7 +495,7 @@ body {
 }
 
 /* ========================================
-   LOCATION SECTION - CON MAPA DESTACADO
+   LOCATION SECTION - CON MAPA DESTACADO Y ZOOM
    ======================================== */
 .location {
     padding: 100px 0;
@@ -622,7 +622,7 @@ body {
 }
 
 .whatsapp-link {
-    background: #25D366;
+    background: var(--whatsapp-green);
     color: white;
 }
 
@@ -688,7 +688,7 @@ body {
 }
 
 .btn-whatsapp {
-    background: #25D366;
+    background: var(--whatsapp-green);
     color: white;
 }
 
