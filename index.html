@@ -31,7 +31,7 @@
             <div class="nav-links">
                 <a href="#inicio">Inicio</a>
                 <a href="#productos">Piezas</a>
-                <a href="#ubicacion">Ubicación</a>
+                <a href="#ubicaciones">Sucursales</a>
                 <a href="#contacto">Contacto</a>
             </div>
             <div class="nav-buttons">
@@ -133,67 +133,82 @@
         </div>
     </section>
 
-    <!-- Ubicación con mapa destacado y zoom -->
-    <section id="ubicacion" class="location">
+    <!-- Sucursales / Ubicaciones -->
+    <section id="ubicaciones" class="locations">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Dónde estamos</span>
-                <h2 class="section-title">Visítanos en <span class="highlight">Pinar del Río</span></h2>
+                <span class="section-tag">Nuestras tiendas</span>
+                <h2 class="section-title">Encuéntranos en <span class="highlight">3 municipios</span></h2>
+                <p class="section-desc">Estamos presentes en Pinar del Río, Consolación del Sur y Sandino</p>
             </div>
-            <div class="location-grid">
-               <div class="map-wrapper">
-    <div class="map-pin-overlay">
-        <div class="pin-marker">
-            <i class="fas fa-map-marker-alt"></i>
-            <span>MOTO MANIA</span>
-        </div>
-    </div>
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d656.8494652820864!2d-83.69373590627644!3d22.417300261499406!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f34ad00100e13f7%3A0x976e4ce2918ca116!2sMotomania!5e1!3m2!1ses!2scu!4v1774377051930!5m2!1ses!2scu" 
-        width="100%" 
-        height="400" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-</div>
-                <div class="info-card">
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="info-text">
-                            <h4>Dirección</h4>
-                            <p>110 Gerardo Medina, Pinar del Río, Cuba<br>Código: C884+RC</p>
-                        </div>
+            
+            <div class="locations-grid">
+                <!-- Sucursal Pinar del Río -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <i class="fas fa-city"></i>
+                        <h3>Pinar del Río</h3>
+                        <span class="location-badge">Principal</span>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="info-text">
-                            <h4>Teléfono / WhatsApp</h4>
-                            <p><a href="tel:+5358536015">+53 58536015</a></p>
-                        </div>
+                    <div class="location-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d656.8494652820864!2d-83.69373590627644!3d22.417300261499406!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f34ad00100e13f7%3A0x976e4ce2918ca116!2sMotomania!5e1!3m2!1ses!2scu!4v1774377051930!5m2!1ses!2scu" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 16px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="info-text">
-                            <h4>Grupo WhatsApp</h4>
-                            <p>Disponibilidad y novedades</p>
-                        </div>
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> 110 Gerardo Medina, Pinar del Río</p>
+                        <p><i class="fas fa-code"></i> Código: C884+RC</p>
                     </div>
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </div>
-                        <div class="info-text">
-                            <h4>Grupo Facebook</h4>
-                            <p>Comunidad y novedades</p>
-                        </div>
+                </div>
+
+                <!-- Sucursal Consolación del Sur -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <i class="fas fa-tree"></i>
+                        <h3>Consolación del Sur</h3>
+                        <span class="location-badge-secondary">Próximamente</span>
+                    </div>
+                    <div class="location-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14658.123456789012!2d-83.515000!3d22.500000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ec7e5a5e5e5e5e%3A0x1234567890abcdef!2sConsolaci%C3%B3n%20del%20Sur!5e1!3m2!1ses!2scu!4v1710000000000!5m2!1ses!2scu&zoom=15" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 16px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> Calle Principal, Consolación del Sur</p>
+                        <p><i class="fas fa-clock"></i> Dirección exacta próximamente</p>
+                    </div>
+                </div>
+
+                <!-- Sucursal Sandino -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <i class="fas fa-umbrella-beach"></i>
+                        <h3>Sandino</h3>
+                        <span class="location-badge-secondary">Próximamente</span>
+                    </div>
+                    <div class="location-map">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14620.123456789012!2d-84.120000!3d22.080000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ec5a5a5e5e5e5e%3A0x1234567890abcdef!2sSandino!5e1!3m2!1ses!2scu!4v1710000000000!5m2!1ses!2scu&zoom=15" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0; border-radius: 16px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="location-info">
+                        <p><i class="fas fa-location-dot"></i> Calle Central, Sandino</p>
+                        <p><i class="fas fa-clock"></i> Dirección exacta próximamente</p>
                     </div>
                 </div>
             </div>
@@ -232,6 +247,7 @@
                     <i class="fas fa-motorcycle"></i>
                     <span>MOTO MANIA</span>
                     <p>Piezas y accesorios para motocicletas</p>
+                    <p class="sucursales-footer">📍 Sucursales: Pinar del Río · Consolación del Sur · Sandino</p>
                 </div>
                 <div class="footer-info">
                     <div class="footer-col">
@@ -241,7 +257,7 @@
                         <a href="https://www.facebook.com/share/1KY6tDqjFy/" target="_blank">Grupo Facebook</a>
                     </div>
                     <div class="footer-col">
-                        <h4>Dirección</h4>
+                        <h4>Dirección matriz</h4>
                         <span>110 Gerardo Medina</span>
                         <span>Pinar del Río, Cuba</span>
                         <span>Código: C884+RC</span>
@@ -249,7 +265,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>MOTO MANIA · ⭐ 5.0 en Google Maps</p>
+                <p>MOTO MANIA · ⭐ 5.0 en Google Maps · Sucursales en toda la provincia</p>
             </div>
         </div>
     </footer>
