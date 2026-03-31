@@ -1173,3 +1173,168 @@ body {
 .contact-buttons .btn-facebook {
     flex: 0 1 auto;
 }
+
+/* ========================================
+   SUBCATEGORÍAS CON VISTA PREVIA
+   ======================================== */
+.subcategoria-card {
+    background: var(--charcoal);
+    border-radius: 20px;
+    padding: 20px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid var(--border-color);
+}
+
+.subcategoria-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--red-accent);
+    box-shadow: 0 10px 25px rgba(196, 30, 58, 0.2);
+}
+
+.subcategoria-preview {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.subcategoria-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.subcategoria-card:hover .subcategoria-preview img {
+    transform: scale(1.05);
+}
+
+.subcategoria-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(196, 30, 58, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.subcategoria-icon i {
+    font-size: 2rem;
+    color: var(--red-accent);
+}
+
+.subcategoria-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.subcategoria-card p {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+}
+
+.subcategoria-btn {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(196, 30, 58, 0.2);
+    border-radius: 30px;
+    font-size: 0.75rem;
+    color: var(--red-accent);
+    transition: all 0.3s;
+}
+
+.subcategoria-card:hover .subcategoria-btn {
+    background: var(--red-accent);
+    color: white;
+}
+
+/* ========================================
+   LIGHTBOX DENTRO DEL MODAL
+   ======================================== */
+.modal-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 3100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.modal-lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    cursor: default;
+}
+
+.modal-lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.modal-lightbox-caption {
+    text-align: center;
+    color: white;
+    margin-top: 16px;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: inline-block;
+    width: auto;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.modal-lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-lightbox-close:hover {
+    color: var(--red-accent);
+}
+
+@media (max-width: 768px) {
+    .modal-lightbox-close {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .modal-lightbox-caption {
+        white-space: normal;
+        bottom: -70px;
+        width: 90%;
+        text-align: center;
+    }
+}
