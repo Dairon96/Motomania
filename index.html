@@ -74,7 +74,7 @@
                         <i class="fab fa-facebook-f"></i> Grupo Facebook
                     </a>
                     <a href="tel:+5358536015" class="btn-secondary">
-                        <i class="fas fa-phone-alt"></i> +53 58530645
+                        <i class="fas fa-phone-alt"></i> +53 58536015
                     </a>
                 </div>
             </div>
@@ -132,13 +132,24 @@
                 </div>
             </div>
             
-            <!-- Modal / Lightbox para mostrar fotos -->
-            <div id="productModal" class="product-modal">
-                <div class="modal-content">
+            <!-- Modal para subcategorías de accesorios -->
+            <div id="accesoriosModal" class="product-modal">
+                <div class="modal-content modal-large">
                     <span class="modal-close">&times;</span>
-                    <h3 id="modalTitle"></h3>
-                    <div class="modal-gallery" id="modalGallery">
-                        <!-- Las fotos se cargarán dinámicamente con JavaScript -->
+                    <h3 id="accesoriosModalTitle">Accesorios</h3>
+                    <div id="subcategoriasContainer" class="subcategorias-grid">
+                        <!-- Las subcategorías se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal para galería de productos (con lightbox integrado) -->
+            <div id="galleryModal" class="product-modal">
+                <div class="modal-content modal-large">
+                    <span class="modal-close">&times;</span>
+                    <h3 id="galleryModalTitle"></h3>
+                    <div class="modal-gallery" id="galleryModalContainer">
+                        <!-- Las fotos se cargarán dinámicamente -->
                     </div>
                 </div>
             </div>
@@ -243,7 +254,7 @@
                         </div>
                         <div class="hours-row">
                             <span class="days">Domingos</span>
-                            <span class="time closed">8:00 AM - 12:00 PM</span>
+                            <span class="time closed">Cerrado</span>
                         </div>
                     </div>
                     <p class="schedule-note">
@@ -291,7 +302,7 @@
                 <div class="footer-info">
                     <div class="footer-col">
                         <h4>Contacto</h4>
-                        <a href="tel:+5358530645">+53 58530645</a>
+                        <a href="tel:+5358536015">+53 58536015</a>
                         <a href="https://chat.whatsapp.com/E7s4h2pKwpF4VQa9QPDEwJ" target="_blank">Grupo WhatsApp</a>
                         <a href="https://www.facebook.com/share/1KY6tDqjFy/" target="_blank">Grupo Facebook</a>
                     </div>
@@ -328,10 +339,10 @@
         });
 
         // ========================================
-        // GALERÍA INTERACTIVA DE PRODUCTOS
+        // DATOS DE PRODUCTOS Y SUBCATEGORÍAS
         // ========================================
         
-        // Datos de productos con imágenes
+        // Datos de productos principales
         const productsData = {
             electronica: {
                 title: "Electrónica",
@@ -362,40 +373,202 @@
                     { img: "img/transmision/embrague.jpg", name: "Kit de embrague" },
                     { img: "img/transmision/disco-freno.jpg", name: "Disco de freno" }
                 ]
-            },
-            accesorios: {
-                title: "Accesorios",
-                items: [
-                    { img: "img/accesorios/casco.jpg", name: "Casco integral" },
-                    { img: "img/accesorios/espejos.jpg", name: "Espejos retro" },
-                    { img: "img/accesorios/manillar.jpg", name: "Manillar deportivo" },
-                    { img: "img/accesorios/maleta.jpg", name: "Maleta lateral" },
-                    { img: "img/accesorios/protector.jpg", name: "Protector de motor" }
-                ]
             }
         };
 
-        // Esperar a que el DOM esté completamente cargado
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('productModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalGallery = document.getElementById('modalGallery');
-            const closeModal = document.querySelector('.modal-close');
-
-            // Verificar que los elementos existan
-            if (!modal || !modalTitle || !modalGallery) {
-                console.error('Elementos del modal no encontrados');
-                return;
+        // Datos de subcategorías de accesorios
+        const subcategoriasData = {
+            cascos: {
+                title: "Cascos",
+                icon: "fa-helmet-safety",
+                items: [],
+                previewImg: ""
+            },
+            espejos: {
+                title: "Espejos",
+                icon: "fa-eye",
+                items: [],
+                previewImg: ""
+            },
+            manillares: {
+                title: "Manillares",
+                icon: "fa-hand-peace",
+                items: [],
+                previewImg: ""
+            },
+            maletas: {
+                title: "Maletas",
+                icon: "fa-suitcase",
+                items: [],
+                previewImg: ""
+            },
+            protectores: {
+                title: "Protectores",
+                icon: "fa-shield-alt",
+                items: [],
+                previewImg: ""
             }
+        };
 
-            // Función para abrir modal con imágenes
-            window.openModal = function(category) {
-                const data = productsData[category];
-                if (!data) return;
+        // Función para cargar imágenes y actualizar previews
+        function updatePreviewImages() {
+            for (const [key, data] of Object.entries(subcategoriasData)) {
+                if (data.items.length > 0 && data.items[0].img) {
+                    data.previewImg = data.items[0].img;
+                } else {
+                    data.previewImg = '';
+                }
+            }
+        }
+
+        // Cargar cascos desde JSON
+        fetch('cascos.json')
+            .then(response => {
+                if (!response.ok) throw new Error('No se pudo cargar cascos.json');
+                return response.json();
+            })
+            .then(data => {
+                if (data.cascos && Array.isArray(data.cascos)) {
+                    subcategoriasData.cascos.items = data.cascos;
+                    updatePreviewImages();
+                    // Si ya se cargaron las subcategorías, actualizar la vista
+                    if (window.subcategoriasLoaded) {
+                        renderSubcategorias();
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error cargando cascos:', error);
+                subcategoriasData.cascos.items = [
+                    { img: "img/accesorios/cascos/casco1.jpg", name: "Casco Urbano" },
+                    { img: "img/accesorios/cascos/casco2.jpg", name: "Casco Integral" }
+                ];
+                updatePreviewImages();
+            });
+
+        // Cargar otros accesorios desde JSON
+        fetch('accesorios.json')
+            .then(response => {
+                if (response.ok) return response.json();
+                throw new Error('No existe accesorios.json');
+            })
+            .then(data => {
+                if (data.espejos) subcategoriasData.espejos.items = data.espejos;
+                if (data.manillares) subcategoriasData.manillares.items = data.manillares;
+                if (data.maletas) subcategoriasData.maletas.items = data.maletas;
+                if (data.protectores) subcategoriasData.protectores.items = data.protectores;
+                updatePreviewImages();
+                if (window.subcategoriasLoaded) {
+                    renderSubcategorias();
+                }
+            })
+            .catch(() => {
+                // Datos de ejemplo
+                subcategoriasData.espejos.items = [
+                    { img: "img/accesorios/espejos/espejo1.jpg", name: "Espejo Redondo" }
+                ];
+                subcategoriasData.manillares.items = [
+                    { img: "img/accesorios/manillares/manillar1.jpg", name: "Manillar Deportivo" }
+                ];
+                subcategoriasData.maletas.items = [
+                    { img: "img/accesorios/maletas/maleta1.jpg", name: "Maleta Lateral" }
+                ];
+                subcategoriasData.protectores.items = [
+                    { img: "img/accesorios/protectores/protector1.jpg", name: "Protector de Motor" }
+                ];
+                updatePreviewImages();
+            });
+
+        // ========================================
+        // FUNCIONES DE MODALES Y GALERÍA
+        // ========================================
+        
+        let currentModal = null;
+        let currentGalleryContainer = null;
+
+        // Función para abrir lightbox en el mismo modal
+        function openLightboxInModal(modalElement, imgSrc, imgName) {
+            // Crear lightbox overlay dentro del modal
+            const existingLightbox = modalElement.querySelector('.modal-lightbox');
+            if (existingLightbox) {
+                existingLightbox.remove();
+            }
+            
+            const lightboxDiv = document.createElement('div');
+            lightboxDiv.className = 'modal-lightbox';
+            lightboxDiv.innerHTML = `
+                <div class="modal-lightbox-content">
+                    <span class="modal-lightbox-close">&times;</span>
+                    <img src="${imgSrc}" alt="${imgName}" class="modal-lightbox-img">
+                    <p class="modal-lightbox-caption">${imgName}</p>
+                </div>
+            `;
+            
+            modalElement.appendChild(lightboxDiv);
+            
+            // Cerrar lightbox al hacer clic en la X o fuera de la imagen
+            const closeBtn = lightboxDiv.querySelector('.modal-lightbox-close');
+            closeBtn.addEventListener('click', () => lightboxDiv.remove());
+            lightboxDiv.addEventListener('click', (e) => {
+                if (e.target === lightboxDiv) {
+                    lightboxDiv.remove();
+                }
+            });
+        }
+
+        // Renderizar subcategorías con vista previa
+        function renderSubcategorias() {
+            const container = document.getElementById('subcategoriasContainer');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            for (const [key, data] of Object.entries(subcategoriasData)) {
+                const card = document.createElement('div');
+                card.className = 'subcategoria-card';
                 
-                modalTitle.textContent = data.title;
-                modalGallery.innerHTML = '';
+                // Si hay imagen de preview, mostrarla
+                const previewHtml = data.previewImg ? `
+                    <div class="subcategoria-preview">
+                        <img src="${data.previewImg}" alt="${data.title}" onerror="this.src='https://placehold.co/150x100/1a1a1a/c41e3a?text=Sin+imagen'">
+                    </div>
+                ` : `
+                    <div class="subcategoria-icon">
+                        <i class="fas ${data.icon}"></i>
+                    </div>
+                `;
                 
+                card.innerHTML = `
+                    ${previewHtml}
+                    <h4>${data.title}</h4>
+                    <p>${data.items.length} productos</p>
+                    <span class="subcategoria-btn">Ver más</span>
+                `;
+                card.addEventListener('click', () => showSubcategoriaGallery(key));
+                container.appendChild(card);
+            }
+        }
+
+        // Mostrar galería de una subcategoría
+        function showSubcategoriaGallery(subcategoriaKey) {
+            const data = subcategoriasData[subcategoriaKey];
+            if (!data) return;
+            
+            const modal = document.getElementById('galleryModal');
+            const modalTitle = document.getElementById('galleryModalTitle');
+            const container = document.getElementById('galleryModalContainer');
+            
+            modalTitle.textContent = data.title;
+            container.innerHTML = '';
+            
+            if (data.items.length === 0) {
+                const div = document.createElement('div');
+                div.className = 'modal-item';
+                div.style.textAlign = 'center';
+                div.style.padding = '40px';
+                div.innerHTML = '<p>Próximamente más productos</p>';
+                container.appendChild(div);
+            } else {
                 data.items.forEach(item => {
                     const div = document.createElement('div');
                     div.className = 'modal-item';
@@ -403,30 +576,103 @@
                         <img src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/300x200/1a1a1a/c41e3a?text=Imagen+Próximamente'">
                         <p>${item.name}</p>
                     `;
-                    modalGallery.appendChild(div);
-                });
-                
-                modal.classList.add('active');
-            };
-
-            // Asignar eventos a las tarjetas de productos
-            document.querySelectorAll('.product-card').forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (category) {
-                    card.addEventListener('click', () => window.openModal(category));
-                }
-            });
-
-            // Cerrar modal
-            if (closeModal) {
-                closeModal.addEventListener('click', () => {
-                    modal.classList.remove('active');
+                    const img = div.querySelector('img');
+                    img.style.cursor = 'pointer';
+                    img.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        openLightboxInModal(modal, item.img, item.name);
+                    });
+                    container.appendChild(div);
                 });
             }
             
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
+            // Cerrar modal de subcategorías y abrir galería
+            document.getElementById('accesoriosModal').classList.remove('active');
+            modal.classList.add('active');
+            currentModal = modal;
+            currentGalleryContainer = container;
+        }
+
+        // Mostrar subcategorías de accesorios
+        function showSubcategorias() {
+            renderSubcategorias();
+            document.getElementById('accesoriosModalTitle').textContent = 'Accesorios';
+            document.getElementById('accesoriosModal').classList.add('active');
+        }
+
+        // Función para abrir modal de productos principales
+        function openMainModal(category) {
+            const data = productsData[category];
+            if (!data) return;
+            
+            const modal = document.getElementById('productModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const container = document.getElementById('modalGallery');
+            
+            modalTitle.textContent = data.title;
+            container.innerHTML = '';
+            
+            data.items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'modal-item';
+                div.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/300x200/1a1a1a/c41e3a?text=Imagen+Próximamente'">
+                    <p>${item.name}</p>
+                `;
+                const img = div.querySelector('img');
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    openLightboxInModal(modal, item.img, item.name);
+                });
+                container.appendChild(div);
+            });
+            
+            modal.classList.add('active');
+            currentModal = modal;
+            currentGalleryContainer = container;
+        }
+
+        // ========================================
+        // EVENTOS Y CONFIGURACIÓN INICIAL
+        // ========================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            window.subcategoriasLoaded = true;
+            
+            // Asignar eventos a las tarjetas de productos
+            document.querySelectorAll('.product-card').forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (category === 'accesorios') {
+                    card.addEventListener('click', showSubcategorias);
+                } else if (category) {
+                    card.addEventListener('click', () => openMainModal(category));
+                }
+            });
+            
+            // Cerrar modales
+            const closeButtons = document.querySelectorAll('.modal-close');
+            closeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.getElementById('accesoriosModal').classList.remove('active');
+                    document.getElementById('galleryModal').classList.remove('active');
+                    document.getElementById('productModal').classList.remove('active');
+                    // Cerrar también cualquier lightbox abierto
+                    document.querySelectorAll('.modal-lightbox').forEach(lb => lb.remove());
+                });
+            });
+            
+            // Cerrar modales al hacer clic fuera
+            const modals = ['accesoriosModal', 'galleryModal', 'productModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            modal.classList.remove('active');
+                            document.querySelectorAll('.modal-lightbox').forEach(lb => lb.remove());
+                        }
+                    });
                 }
             });
         });
