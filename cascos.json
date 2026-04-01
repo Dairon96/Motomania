@@ -1,24 +1,23 @@
 {
     "cascos": [
         { "img": "Img/Accesorios/Cascos/1.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/2.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/3.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/4.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/5.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/6.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/7.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/8.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/9.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/10.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/11.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/12.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/13.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/14.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/15.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/16.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/17.jpg", "name": "" },
-        { "img": "img/accesorios/cascos/18.jpg", "name": "" }
-
- 
+        { "img": "Img/Accesorios/Cascos/2.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/3.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/4.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/5.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/6.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/7.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/8.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/9.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/10.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/11.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/12.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/13.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/14.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/15.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/16.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/17.jpg", "name": "" },
+        { "img": "Img/Accesorios/Cascos/18.jpg", "name": "" }
+        
     ]
 }
